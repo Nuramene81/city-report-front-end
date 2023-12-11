@@ -3,8 +3,25 @@
     <div class="logo-container">
       <div class="logo-wrapper">
         <img class="logo-img" src="assets/images/city-report-logo-cropped.png">
-      <p class="logo-text">City Report</p>
+        <p class="logo-text">City Report</p>
       </div>
+    </div>
+    <div class="welcome-title-container">
+      <h1 class="welcome-title">Welcome!</h1>
+      <p class="body-text">Please enter your login details or sign up</p>
+    </div>
+    <div class="form-container">
+      <form class="form-content" [formGroup]="loginForm">
+        <input class="email-field" type="email" formControlName="email" placeholder="Email">
+        <input class="password-field" type="password" formControlName="password" placeholder="Password">
+        <div class="form-options">
+          <div class="forgot-password-container">
+            <span class="body-text">Forgot password?</span>
+          </div>
+        </div>
+        
+        <button type="submit">Log In</button>
+      </form>
     </div>
   </div>              
 </div>

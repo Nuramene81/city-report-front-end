@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '_variables';
+
 body {
   font-family: 'Blinker', sans-serif;
+}
+
+.body-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  color: $primary-color;
 }
