@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LogoComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

@@ -1,0 +1,25 @@
+@import '../../_variables.scss';
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo-img {
+      width: 80px;
+    }
+    
+    .logo-text {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $primary-color;
+    }
+  }
+}

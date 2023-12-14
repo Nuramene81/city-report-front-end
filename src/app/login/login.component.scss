@@ -13,33 +13,6 @@
     height: 100%;
     padding: 20px;
 
-    
-
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-end;
-      // margin-bottom: 100px;
-
-      .logo-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .logo-img {
-          width: 80px;
-        }
-        
-        .logo-text {
-          margin: 0;
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: $primary-color;
-        }
-      }
-    }
-
     .body-container {
       display: flex;
       flex-direction: column;
