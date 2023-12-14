@@ -95,6 +95,25 @@
         }
       }
     }
+
+    .content-footer-container {
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+
+      div {
+        margin-right: 20px;
+      }
+
+      .sign-up {
+        color: $primary-color;
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
   }
 }
 
