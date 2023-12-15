@@ -1,0 +1,154 @@
+@import '../../_variables.scss';
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+
+    .body-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 80%;
+
+      .sign-up-title-container {
+        margin-bottom: 20px;
+  
+        .sign-up-title {
+          margin: 0 0 15px 0;
+          font-size: 3rem;
+          font-weight: 700;
+          color: $primary-color;
+          line-height: 1;
+        }
+      }
+  
+      .form-container {
+        .form-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          position: relative;
+  
+          input {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-bottom: 1px solid $primary-color;
+            background-color: transparent !important;
+            margin-bottom: 20px;
+  
+            &:focus {
+              border: none;
+              outline: none;
+              box-shadow: none;
+              background-color: transparent;
+              border-bottom: 1px solid $primary-color;
+            }
+          }
+
+          .confirm-password-field {
+            margin-bottom: 10px;
+          }
+
+          .password-sub-text {
+            font-size: 0.8rem;
+            color: #999;
+          }
+      
+          .show-password-icon {
+            position: absolute;
+            right: 10px;
+            top: 205px;
+            width: 20px;
+            cursor: pointer;
+          }
+          
+          .show-confirm-password-icon {
+            position: absolute;
+            right: 10px;
+            top: 268px;
+            width: 20px;
+            cursor: pointer;
+          }
+  
+          .form-options {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+          }
+  
+          button {
+            width: 100%;
+            height: 40px;
+            border: none;
+            background-color: $primary-color;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 20px;
+            cursor: pointer;
+  
+            &:focus {
+              border: none;
+              outline: none;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+  
+      .form-options-container {
+        display:flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        margin-top: 20px;
+  
+        .log-in {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: flex-end;
+  
+          div {
+            margin-left: 20px;
+          }
+  
+          .log-in-text {
+            color: $primary-color;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

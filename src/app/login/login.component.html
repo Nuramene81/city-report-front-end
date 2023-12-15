@@ -9,8 +9,8 @@
       <div class="form-container">
         <form class="form-content" [formGroup]="loginForm">
           <input class="email-field" type="email" formControlName="email" placeholder="Email">
-          <input class="password-field" type="password" formControlName="password" placeholder="Password">
-          <img class="show-icon" src="assets/icons/eyecon.svg" (click)="toggleShowPassword()" alt="Show password">
+          <input class="password-field" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password">
+          <img class="show-icon" src="assets/icons/eyecon.svg" (click)="showPassword = !showPassword" alt="Show password">
           <button type="submit">Log In</button>
         </form>
       </div>
@@ -18,7 +18,9 @@
         <div class="forgot-password-container">Forgot password?</div>
         <div class="sign-up">
           <div class="body-text">Don't have an account?</div>
-          <div class="sign-up-text">Sign up</div>
+          <div class="sign-up-text">
+            <a routerLink="/sign-up">Sign up</a>
+          </div>
         </div>
       </div>
     </div>
