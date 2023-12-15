@@ -10,6 +10,7 @@
         <form class="form-content" [formGroup]="loginForm">
           <input class="email-field" type="email" formControlName="email" placeholder="Email">
           <input class="password-field" type="password" formControlName="password" placeholder="Password">
+          <img class="show-icon" src="assets/icons/eyecon.svg" (click)="toggleShowPassword()" alt="Show password">
           <button type="submit">Log In</button>
         </form>
       </div>

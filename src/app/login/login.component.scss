@@ -36,6 +36,7 @@
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
+          position: relative;
   
           input {
             width: 100%;
@@ -51,6 +52,14 @@
               box-shadow: none;
               background-color: transparent;
             }
+          }
+      
+          .show-icon {
+            position: absolute;
+            right: 10px;
+            top: 78px;
+            width: 20px;
+            cursor: pointer;
           }
   
           .form-options {
