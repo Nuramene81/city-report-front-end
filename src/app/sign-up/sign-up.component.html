@@ -7,8 +7,14 @@
         <p class="body-text">Enter your details to create an account</p>
       </div>
       <div class="form-container">
-        <form class="form-content" [formGroup]="loginForm">
+        <form class="form-content" [formGroup]="signUpForm">
           <input class="email-field" type="email" formControlName="email" placeholder="Email">
+          @if (signUpForm.controls['email'].invalid && !signUpForm.controls['email'].pristine && signUpForm.controls['email'].touched) {
+            <span class="invalid-email-text">Invalid email address</span>
+          } @else {
+            <span class="invalid-email-text">&nbsp;</span>
+          }
+          
           <input class="full-name-field" type="text" formControlName="fullName" placeholder="Full Name">
           <input class="username-field" type="text" formControlName="username" placeholder="Username">
           <input class="password-field" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" autocomplete="new-password">

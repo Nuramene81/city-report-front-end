@@ -56,6 +56,16 @@
             }
           }
 
+          .email-field {
+            margin-bottom: 7px;
+          }
+
+          .invalid-email-text {
+            font-size: 0.8rem;
+            color: $error-color;
+            margin-bottom: 10px;
+          }
+
           .confirm-password-field {
             margin-bottom: 10px;
           }
