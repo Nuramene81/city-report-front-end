@@ -35,7 +35,17 @@ export class SignUpComponent implements OnInit {
           updateOn: 'blur' 
         }
       ),
-      fullName: new FormControl(''),
+      fullName: new FormControl(
+        '', 
+        { validators: [
+            Validators.required, 
+            Validators.minLength(2),
+            Validators.maxLength(50),
+            Validators.pattern('^[a-zA-Z \-\']+$')
+          ], 
+          updateOn: 'blur' 
+        }
+      ),
       username: new FormControl(''),
       password: new FormControl(''),
       confirmPassword: new FormControl('')
