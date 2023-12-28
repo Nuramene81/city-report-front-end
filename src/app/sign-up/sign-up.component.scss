@@ -60,9 +60,17 @@
             margin-bottom: 5px;
           }
 
-          .invalid-email-text {
+          .invalid-input-text {
             font-size: 0.8rem;
             color: $error-color;
+            margin-bottom: 5px;
+          }
+
+          .full-name-field {
+            margin-bottom: 5px;
+          }
+
+          .username-field {
             margin-bottom: 5px;
           }
 

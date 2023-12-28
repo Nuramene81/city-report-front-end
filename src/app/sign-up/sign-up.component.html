@@ -9,27 +9,23 @@
       <div class="form-container">
         <form class="form-content" [formGroup]="signUpForm">
           <input class="email-field" type="email" formControlName="email" placeholder="Email">
-          @if (signUpForm.controls['email'].invalid && 
-              !signUpForm.controls['email'].pristine &&  
-              signUpForm.controls['email'].touched &&
-              signUpForm.controls['email'].value
-              ) {
-              <span class="invalid-email-text">Invalid email address</span>
+          @if (isInputInvalid('email')) {
+              <span class="invalid-input-text">Invalid email address</span>
             } @else {
-              <span class="invalid-email-text">&nbsp;</span>
+              <span class="invalid-input-text">&nbsp;</span>
             }
-          
           <input class="full-name-field" type="text" formControlName="fullName" placeholder="Full Name">
-          @if (signUpForm.controls['fullName'].invalid && 
-            !signUpForm.controls['fullName'].pristine &&  
-            signUpForm.controls['fullName'].touched &&
-            signUpForm.controls['fullName'].value
-            ) {
-            <span class="invalid-email-text">Invalid name</span>
+          @if (isInputInvalid('fullName')) {
+            <span class="invalid-input-text">Invalid name</span>
           } @else {
-            <span class="invalid-email-text">&nbsp;</span>
+            <span class="invalid-input-text">&nbsp;</span>
           }
           <input class="username-field" type="text" formControlName="username" placeholder="Username">
+          @if (isInputInvalid('username')) {
+            <span class="invalid-input-text">Invalid username</span>
+          } @else {
+            <span class="invalid-input-text">&nbsp;</span>
+          }
           <input class="password-field" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" autocomplete="new-password">
           <img class="show-password-icon" src="assets/icons/eyecon.svg" (click)="showPassword = !showPassword" alt="Show password">
           <input class="confirm-password-field" 

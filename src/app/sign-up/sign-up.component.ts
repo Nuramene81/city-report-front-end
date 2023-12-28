@@ -46,14 +46,33 @@ export class SignUpComponent implements OnInit {
           updateOn: 'blur' 
         }
       ),
-      username: new FormControl(''),
-      password: new FormControl(''),
-      confirmPassword: new FormControl('')
+      username: new FormControl(
+        '', 
+        { validators: [
+            Validators.required, 
+            Validators.minLength(5),
+            Validators.maxLength(20),
+            Validators.pattern('^[a-zA-Z0-9_-]+$')
+          ], 
+          updateOn: 'blur' 
+        }
+      ),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(128)
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required
+      ])
     });
   }
 
-  // logValidity() {
-  //   console.log(this.signUpForm.controls['email'].valid);
-  // }
+  isInputInvalid(inputName: string) {
+    return this.signUpForm.controls[inputName].invalid && 
+          !this.signUpForm.controls[inputName].pristine &&  
+          this.signUpForm.controls[inputName].touched &&
+          this.signUpForm.controls[inputName].value
+  }
 
 }
