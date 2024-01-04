@@ -3,6 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LogoComponent } from '../logo/logo.component';
 import { RouterModule } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +12,11 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule,
     ReactiveFormsModule,
-    LogoComponent
+    LogoComponent,
+    HttpClientModule
+  ],
+  providers: [
+    UserService
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
@@ -19,6 +25,10 @@ export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup
   showPassword = false;
   showConfirmPassword = false;
+
+  constructor(
+    private userService: UserService
+    ) { }
 
   ngOnInit() {
     this.initializeSignUpForm();
@@ -75,4 +85,11 @@ export class SignUpComponent implements OnInit {
           this.signUpForm.controls[inputName].value
   }
 
+  onSubmit() {
+    console.log(this.signUpForm.value);
+    this.userService.test().subscribe(
+      (res) => {
+        console.log(res);
+      });
+  }
 }

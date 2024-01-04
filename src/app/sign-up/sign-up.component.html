@@ -7,7 +7,7 @@
         <p class="body-text">Enter your details to create an account</p>
       </div>
       <div class="form-container">
-        <form class="form-content" [formGroup]="signUpForm">
+        <form class="form-content" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
           <input class="email-field" type="email" formControlName="email" placeholder="Email">
           @if (isInputInvalid('email')) {
               <span class="invalid-input-text">Invalid email address</span>
