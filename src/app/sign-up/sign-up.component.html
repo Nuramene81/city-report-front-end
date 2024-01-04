@@ -28,6 +28,11 @@
           }
           <input class="password-field" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" autocomplete="new-password">
           <img class="show-password-icon" src="assets/icons/eyecon.svg" (click)="showPassword = !showPassword" alt="Show password">
+          @if (isInputInvalid('password')) {
+            <span class="invalid-input-text">Invalid password</span>
+          } @else {
+            <span class="invalid-input-text">&nbsp;</span>
+          }
           <input class="confirm-password-field" 
           [type]="showConfirmPassword ? 'text' : 'password'"
             formControlName="confirmPassword" 
