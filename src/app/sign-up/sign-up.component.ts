@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LogoComponent } from '../logo/logo.component';
+import { HomeComponent } from '../home/home.component';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     ReactiveFormsModule,
     LogoComponent,
-    HttpClientModule
+    HttpClientModule,
+    HomeComponent
   ],
   providers: [
     UserService
@@ -25,9 +28,11 @@ export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup
   showPassword = false;
   showConfirmPassword = false;
+  isPasswordMatching = true;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -87,9 +92,23 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signUpForm.value);
-    this.userService.test().subscribe(
-      (res) => {
-        console.log(res);
-      });
+    this.isConfirmPasswordMatching();
+    if(this.isPasswordMatching && this.signUpForm.valid){
+      this.userService.signUp({
+        email: this.signUpForm.value.email,
+        fullName: this.signUpForm.value.fullName,
+        username: this.signUpForm.value.username,
+        password: this.signUpForm.value.password,
+        profileImageURL: 'https://www.gravatar.com/avatar'
+      }).subscribe(
+        (res) => {
+          console.log(res);
+          this.router.navigate(['/']);
+        });
+    }
+  }
+
+  isConfirmPasswordMatching() {
+    this.isPasswordMatching = this.signUpForm.controls['confirmPassword'].value === this.signUpForm.controls['password'].value
   }
 }

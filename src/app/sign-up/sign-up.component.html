@@ -44,6 +44,11 @@
             alt="Show confirm password"
           >
           <span class="password-sub-text">Password must contain a number and at least 6 characters</span>
+          @if (!isPasswordMatching) {
+            <span class="invalid-input-text">Passwords don't match</span>
+          } @else {
+            <span class="invalid-input-text">&nbsp;</span>
+          }
           <button type="submit">Sign Up</button>
         </form>
       </div>
