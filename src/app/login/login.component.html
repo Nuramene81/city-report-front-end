@@ -7,10 +7,15 @@
         <p class="body-text">Please enter your login details or sign up</p>
       </div>
       <div class="form-container">
-        <form class="form-content" [formGroup]="loginForm">
+        <form class="form-content" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <input class="email-field" type="email" formControlName="email" placeholder="Email">
           <input class="password-field" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password">
           <img class="show-icon" src="assets/icons/eyecon.svg" (click)="showPassword = !showPassword" alt="Show password">
+          @if (isLoginDetailsValid) {
+            <span class="invalid-input-text">&nbsp;</span>
+          } @else {
+            <span class="invalid-input-text">Invalid password</span>
+          }
           <button type="submit">Log In</button>
         </form>
       </div>

@@ -98,8 +98,7 @@ export class SignUpComponent implements OnInit {
         email: this.signUpForm.value.email,
         fullName: this.signUpForm.value.fullName,
         username: this.signUpForm.value.username,
-        password: this.signUpForm.value.password,
-        profileImageURL: 'https://www.gravatar.com/avatar'
+        password: this.signUpForm.value.password
       }).subscribe(
         (res) => {
           console.log(res);

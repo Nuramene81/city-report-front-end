@@ -67,6 +67,12 @@
             display: flex;
             flex-direction: row;
           }
+
+          .invalid-input-text{
+            font-size: 0.8rem;
+            color: $error-color;
+            margin-bottom: 5px;
+          }
   
           button {
             width: 100%;
