@@ -10,17 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
-  standalone: true,
-  imports: [
-    RouterModule,
-    ReactiveFormsModule,
-    LogoComponent,
-    HttpClientModule,
-    HomeComponent
-  ],
-  providers: [
-    UserService
-  ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })

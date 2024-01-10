@@ -9,16 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [
-    RouterModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    LogoComponent
-  ],
-  providers: [
-    UserService
-  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
