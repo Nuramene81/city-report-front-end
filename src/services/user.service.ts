@@ -12,11 +12,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   signUp(signUpData: any): Observable<any> {
-    return this.http.post<any>(this.signUpUrl, signUpData);
+    return this.http.post<any>(this.signUpUrl, signUpData, { withCredentials: true });
   }
   
   login(loginData: any): Observable<any> {
-    return this.http.post<any>(this.loginUrl, loginData);
+    return this.http.post<any>(this.loginUrl, loginData, { withCredentials: true });
   }
 
   test(): Observable<any> {
