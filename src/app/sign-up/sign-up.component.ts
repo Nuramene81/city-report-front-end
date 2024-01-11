@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LogoComponent } from '../logo/logo.component';
-import { HomeComponent } from '../home/home.component';
-import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',

@@ -4,8 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { LogoComponent } from '../logo/logo.component';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
   isLoginDetailsValid = true;
 
   constructor(
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
     ) { }
 
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.login({
+    this.authService.login({
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     }).subscribe((res) => {
