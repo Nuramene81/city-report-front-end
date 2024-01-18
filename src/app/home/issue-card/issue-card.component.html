@@ -1,0 +1,25 @@
+<div class="issue-card-container">
+  <div class="thumbnail-container">
+    <img src="{{ issue.imageUrl }}" alt="issue thumbnail">
+  </div>
+  <div class="card-body-container">
+    <div class="text-container">
+      <h3>{{ issue.title }}</h3>
+      <p>{{ issue.description }}</p>
+    </div>
+    <div class="info-container">
+      <p>Report by: {{ issue.reportedBy.name }}</p>
+      <p>Location: {{ issue.location }}</p>
+      <p>Date reported: {{ issue.dateReported }}</p>
+      <p>Status: {{ issue.status }}</p>
+      <div class="user-options">
+        <div class="edit">
+          Edit
+        </div>
+        <div class="delete">
+          Delete
+      </div>
+    </div>
+      
+  </div>
+</div>

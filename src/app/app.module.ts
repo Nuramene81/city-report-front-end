@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
+import { IssueCardComponent } from './home/issue-card/issue-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     SignUpComponent,
     LogoComponent,
-    HeaderComponent
+    HeaderComponent,
+    IssueCardComponent
   ],
   imports: [
     CommonModule,

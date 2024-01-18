@@ -1,1 +1,22 @@
 <app-header></app-header>
+<div class="search-form-container">
+  <form class="search-form-content" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <input class="search-field" type="text" formControlName="search" placeholder="Search">
+    <button type="submit">Search</button>
+  </form>
+</div>
+<div class="body-container">
+  <div class="option-container">
+    <h2>Options</h2>
+    <p>Add an issue</p>
+  </div>
+  <div class="issues-container">
+    <h2>Issues</h2>
+    @for (item of issueMockData; track $index) {
+      <app-issue-card [issue]="item"></app-issue-card>
+    }
+  </div>
+  <div class="info-container">
+    <h2>Title</h2>
+  </div>
+</div>
