@@ -1,0 +1,36 @@
+@import '../../../_variables.scss';
+
+.header-container {
+  display: flex;
+  padding: 15px 10px;
+  border-bottom: 1px solid #B8B8B8;
+
+  
+  .logo-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+  }
+
+  .profile-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+
+    .profile-username {
+      margin-right: 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: $primary-color;
+    }
+
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+  }
+}
