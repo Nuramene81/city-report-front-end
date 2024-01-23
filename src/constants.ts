@@ -26,3 +26,5 @@ export const issueMockData = [
     status: 'Open'
   }
 ];
+
+export const GOOGLE_MAPS_API_KEY = 'AIzaSyBgZdhpkrKU58GzW4CTSHdgGsXd34E1tY0';

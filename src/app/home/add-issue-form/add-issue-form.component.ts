@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IssueService } from '../../../services/issue.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-issue-form',
@@ -10,11 +12,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AddIssueFormComponent {
   addIssueForm!: FormGroup;
   selectedFiles: File[] = [];
+  zoom = 12;
+  center!: google.maps.LatLngLiteral;
+  issueLatitude!: number;
+  issueLongitude!: number;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, content: string}) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: {title: string, content: string},
+    private issueService: IssueService,
+    private dialogRef: MatDialogRef<AddIssueFormComponent>
+    ) {}
 
   ngOnInit() {
     this.initializeAddIssueForm();
+    this.initializeCurrentLocationCoordinates();
   }
 
   initializeAddIssueForm() {
@@ -44,10 +55,8 @@ export class AddIssueFormComponent {
 
   onFileSelected(event: any) {
     const files: FileList = event.target.files;
-
     if (files.length > 0) {
       this.selectedFiles = Array.from(files); 
-
       for (const file of this.selectedFiles) {
         console.log(file);
       }
@@ -61,8 +70,28 @@ export class AddIssueFormComponent {
     });
     formData.append('title', this.addIssueForm.value.title);
     formData.append('description', this.addIssueForm.value.description);
-    formData.forEach((value, key) => {
-      console.log(key + ', ' + value);
+    formData.append('latitude', this.issueLatitude.toString());
+    formData.append('longitude', this.issueLongitude.toString());
+    this.issueService.addIssue(formData).subscribe(() => {
+      this.dialogRef.close();
+    });
+  }
+
+  mapClick(event: any) {
+    console.log(event.latLng.lat());
+    console.log(event.latLng.lng());
+    this.issueLatitude = event.latLng.lat();
+    this.issueLongitude = event.latLng.lng();
+  }
+
+  initializeCurrentLocationCoordinates() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      this.issueLatitude = position.coords.latitude;
+      this.issueLongitude = position.coords.longitude;
     });
   }
 

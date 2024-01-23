@@ -3,13 +3,17 @@
 .add-issue-container {
   font-family: 'Blinker', sans-serif;
   padding: 15px;
-  width: 500px;
+  width: 750px;
 
   .form-container {
+    display: flex;
+    width: 100%;
 
     .add-issue-form {
       display: flex;
       flex-direction: column;
+      width: 45%;
+      margin-right: 15px;
 
       .title-field {
         width: 100%;

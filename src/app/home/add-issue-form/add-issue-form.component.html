@@ -15,6 +15,13 @@
         <button mat-button type="submit">Submit</button>
       </mat-dialog-actions>
     </form>
+    <google-map
+      height="400"
+      width="400"
+      [zoom]="zoom"
+      [center]="center"
+      (mapClick)="mapClick($event)"
+    ></google-map>
   </div>
 </div>
 

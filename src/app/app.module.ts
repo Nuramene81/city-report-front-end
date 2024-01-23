@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { IssueCardComponent } from './home/issue-card/issue-card.component';
 import { AddIssueFormComponent } from './home/add-issue-form/add-issue-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    GoogleMapsModule
   ],
   providers: [
     UserService
