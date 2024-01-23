@@ -1,0 +1,20 @@
+<div class="add-issue-container">
+  <h2>Add an issue</h2>
+  <div class="form-container">
+    <form class="add-issue-form" [formGroup]="addIssueForm" (ngSubmit)="onSubmit()">
+      <input class="title-field" type="text" formControlName="title" placeholder="title">
+      @if (isInputInvalid('title')) {
+        <span class="invalid-input-text">Invalid title</span>
+      } @else {
+        <span class="invalid-input-text">&nbsp;</span>
+      }
+      <textarea class="description-field" rows="4" type="text" formControlName="description" placeholder="description"></textarea>
+      <input type="file" multiple formControlName="files" (change)="onFileSelected($event)">
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit">Submit</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>
+

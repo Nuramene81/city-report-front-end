@@ -56,6 +56,10 @@
   .option-container {
     width: 20%;
     border-right: 1px solid $primary-color;
+
+    .add-an-issue-option {
+      cursor: pointer;
+    }
   }
 
   .issues-container {
