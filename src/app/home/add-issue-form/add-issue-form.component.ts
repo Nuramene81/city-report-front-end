@@ -16,6 +16,8 @@ export class AddIssueFormComponent {
   center!: google.maps.LatLngLiteral;
   issueLatitude!: number;
   issueLongitude!: number;
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {title: string, content: string},
@@ -78,10 +80,15 @@ export class AddIssueFormComponent {
   }
 
   mapClick(event: any) {
-    console.log(event.latLng.lat());
-    console.log(event.latLng.lng());
+    // console.log(event.latLng.lat());
+    // console.log(event.latLng.lng());
     this.issueLatitude = event.latLng.lat();
     this.issueLongitude = event.latLng.lng();
+    // console.log('addMarker');
+    if (event.latLng) {
+      this.markerPositions.length = 0;
+      this.markerPositions.push(event.latLng.toJSON());
+    }
   }
 
   initializeCurrentLocationCoordinates() {
@@ -92,6 +99,7 @@ export class AddIssueFormComponent {
       };
       this.issueLatitude = position.coords.latitude;
       this.issueLongitude = position.coords.longitude;
+      this.markerPositions.push(this.center);
     });
   }
 
