@@ -80,11 +80,8 @@ export class AddIssueFormComponent {
   }
 
   mapClick(event: any) {
-    // console.log(event.latLng.lat());
-    // console.log(event.latLng.lng());
     this.issueLatitude = event.latLng.lat();
     this.issueLongitude = event.latLng.lng();
-    // console.log('addMarker');
     if (event.latLng) {
       this.markerPositions.length = 0;
       this.markerPositions.push(event.latLng.toJSON());

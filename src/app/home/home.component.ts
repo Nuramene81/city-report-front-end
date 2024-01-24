@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { issueMockData } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
@@ -15,6 +15,10 @@ export class HomeComponent {
 
   constructor(private dialog: MatDialog) {}
 
+  ngOnInit() {
+    this.initializeSearchForm();
+  }
+
   onSubmit() {
     console.log(this.searchForm.value);
   }
@@ -22,6 +26,12 @@ export class HomeComponent {
   openAddIssueDialog() {
     this.dialog.open(AddIssueFormComponent, {
       hasBackdrop: true
+    });
+  }
+
+  initializeSearchForm() {
+    this.searchForm = new FormGroup({
+      search: new FormControl('')
     });
   }
 

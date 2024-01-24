@@ -8,12 +8,18 @@
       } @else {
         <span class="invalid-input-text">&nbsp;</span>
       }
-      <textarea class="description-field" rows="4" type="text" formControlName="description" placeholder="description"></textarea>
-      <input type="file" multiple formControlName="files" (change)="onFileSelected($event)">
-      <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-button type="submit">Submit</button>
-      </mat-dialog-actions>
+      <textarea class="description-field" rows="12" type="text" formControlName="description" placeholder="description"></textarea>
+      <label for="fileInput" class="custom-file-upload">Choose Images</label>
+      <input class="file-input" id="fileInput" type="file" multiple formControlName="files" (change)="onFileSelected($event)">
+      @if (selectedFiles.length > 0) {
+        <span>{{selectedFiles.length}} Files selected</span>
+      } 
+      <div class="dialog-actions-container">
+        <mat-dialog-actions>
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button mat-button type="submit">Submit</button>
+        </mat-dialog-actions>
+      </div>
     </form>
     <google-map
       height="400"
