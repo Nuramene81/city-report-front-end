@@ -12,7 +12,7 @@
   </div>
   <div class="issues-container">
     <h2>Issues</h2>
-    @for (item of issueMockData; track $index) {
+    @for (item of issueData; track $index) {
       <app-issue-card [issue]="item"></app-issue-card>
     }
   </div>

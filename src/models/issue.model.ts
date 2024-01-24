@@ -1,12 +1,18 @@
-import { User } from "./user.model";
 
 export interface Issue {
   id: string;
   title: string;
+  reportedBy: IssueUser;
   description: string;
-  location: string;
-  imageUrl: string;
+  latitude: string;
+  longitude: string;
   dateReported: string;
-  reportedBy: User;
-  status: string
+  status: string,
+  issueImages: string[];
+}
+
+interface IssueUser {
+  userUUID?: string;
+  fullName?: string;
+  username?: string;
 }

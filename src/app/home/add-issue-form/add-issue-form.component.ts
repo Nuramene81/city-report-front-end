@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IssueService } from '../../../services/issue.service';
@@ -10,6 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './add-issue-form.component.scss'
 })
 export class AddIssueFormComponent {
+  
   addIssueForm!: FormGroup;
   selectedFiles: File[] = [];
   zoom = 12;
