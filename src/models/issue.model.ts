@@ -4,8 +4,8 @@ export interface Issue {
   title: string;
   reportedBy: IssueUser;
   description: string;
-  latitude: string;
-  longitude: string;
+  issueLatitude: string;
+  issueLongitude: string;
   dateReported: string;
   status: string,
   issueImages: string[];

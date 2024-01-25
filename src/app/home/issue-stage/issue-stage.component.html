@@ -1,0 +1,36 @@
+<div class="issue-stage-container">
+  <div class="issue-stage-body">
+    @if (issue){
+      <h2>{{ issue.title }}</h2>
+      <img class="image-stage" src="{{ stageImage }}" alt="issue thumbnail">
+      <div class="image-thumbnails-container">
+        <div class="image-thumbnails">
+          @for (image of issue.issueImages; track $index){
+            <img src="{{ image }}" alt="issue image" (click)="changeMainImage(image)">
+          }
+        </div>
+      </div>
+      <div class="issue-data">
+        <div class="issue-description">
+          <p>{{ issue.description }}</p>
+        </div>
+        <google-map
+        height="400"
+        width="100%"
+        [zoom]="zoom"
+        [center]="center"
+      >
+        @for (position of markerPositions; track position) {
+          <map-marker [position]="position" [options]="markerOptions" />
+        }
+      </google-map>
+        <div class="issue-info">
+          <p>Reported by: {{ issue.reportedBy.username }}</p>
+          <p>Date reported: {{ issue.dateReported }}</p>
+          <p>Status: {{ issue.status }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+

@@ -5,7 +5,7 @@
   <div class="card-body-container">
     <div class="text-container">
       <h3>{{ issue.title }}</h3>
-      <p>{{ issue.description }}</p>
+      <p>{{ truncateDescription(issue.description) }}</p>
     </div>
     <div class="info-container">
       <p>Reported by: {{ issue.reportedBy.username }}</p>

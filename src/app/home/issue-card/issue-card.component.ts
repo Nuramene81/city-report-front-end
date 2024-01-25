@@ -10,4 +10,8 @@ export class IssueCardComponent {
 
   @Input('issue') issue!: Issue;
 
+  truncateDescription(description: string, limit: number = 100): string {
+    return description.length > limit ? description.substring(0, limit) + '...' : description;
+  }
+
 }
