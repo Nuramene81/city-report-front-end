@@ -13,10 +13,16 @@
   <div class="issues-container">
     <h2>Issues</h2>
     @for (item of issueData; track $index) {
-      <app-issue-card [issue]="item"></app-issue-card>
+      <app-issue-card [issue]="item" (issueSelected)="onIssueSelected($event)"></app-issue-card>
     }
   </div>
   <div class="info-container">
-    <app-issue-stage [issue]="issueData[0]"></app-issue-stage>
+    <app-issue-stage 
+    *ngIf="selectedIssue"
+    [issue]="selectedIssue"
+    [stageImage]="selectedIssue.issueImages[0]"
+    [issueLatitude]="selectedIssue.issueLatitude"
+    [issueLongitude]="selectedIssue.issueLongitude"
+    ></app-issue-stage>
   </div>
 </div>

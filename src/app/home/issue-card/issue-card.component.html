@@ -1,4 +1,4 @@
-<div class="issue-card-container">
+<div class="issue-card-container" (click)="onIssueClick()">
   <div class="thumbnail-container">
     <img src="{{ issue.issueImages[0] }}" alt="issue thumbnail">
   </div>
@@ -19,6 +19,5 @@
           Delete
       </div>
     </div>
-      
   </div>
 </div>

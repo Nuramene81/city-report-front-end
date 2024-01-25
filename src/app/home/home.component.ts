@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { issueMockData } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
 import { IssueService } from '../../services/issue.service';
+import { Issue } from '../../models/issue.model';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,12 @@ import { IssueService } from '../../services/issue.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+
   searchForm!: FormGroup
   issueMockData = issueMockData;
   issueData!: any;
+  selectedIssue!: Issue;
 
   constructor(
     private dialog: MatDialog,
@@ -23,6 +27,9 @@ export class HomeComponent {
   ngOnInit() {
     this.initializeSearchForm();
     this.getIssues();
+    setTimeout(() => {
+      this.selectedIssue = this.issueData[0];
+    }, 300);
   }
 
   onSubmit() {
@@ -45,6 +52,10 @@ export class HomeComponent {
     this.issueService.issues$.subscribe((issues) => {
       this.issueData = issues;
     });
+  }
+
+  onIssueSelected(issue: Issue) {
+    this.selectedIssue = issue;
   }
 
 }

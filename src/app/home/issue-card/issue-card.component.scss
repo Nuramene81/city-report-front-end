@@ -7,6 +7,10 @@
   border: 1px solid $primary-color;
   margin-bottom: 10px;
 
+  &:hover {
+    background-color: $hover-color;
+  }
+
   .thumbnail-container {
     min-width: 120px;
     height: 120px;

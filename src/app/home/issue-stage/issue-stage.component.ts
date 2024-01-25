@@ -9,19 +9,16 @@ import { Issue } from '../../../models/issue.model';
 export class IssueStageComponent {
 
   @Input('issue') issue!: Issue;
+  @Input('stageImage') stageImage!: string;
+  @Input('issueLatitude') issueLatitude!: string;
+  @Input('issueLongitude') issueLongitude!: string;
 
-  stageImage!: string;
   zoom = 12;
   center!: google.maps.LatLngLiteral;
-  issueLatitude!: number;
-  issueLongitude!: number;
   markerOptions: google.maps.MarkerOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
 
   ngOnInit() {
-    if (this.issue) {
-      this.stageImage = this.issue.issueImages[0];
-    }
     this.initializeIssueLocationCoordinates();
   }
 
@@ -30,14 +27,12 @@ export class IssueStageComponent {
   }
 
   initializeIssueLocationCoordinates() {
-    console.log(this.issue);
-    this.issueLatitude = Number(this.issue.issueLatitude);
-    this.issueLongitude = Number(this.issue.issueLongitude);
-    this.center = {
-      lat: this.issueLatitude,
-      lng: this.issueLongitude
-    }
-    this.markerPositions.push(this.center);
+    setTimeout(() => {
+      this.center = {
+        lat: Number(this.issueLatitude),
+        lng: Number(this.issueLongitude)
+      };
+      this.markerPositions = [...this.markerPositions, this.center];
+    }, 300);
   }
-
 }
