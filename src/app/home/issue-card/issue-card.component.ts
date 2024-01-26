@@ -7,6 +7,7 @@ import { IssueService } from '../../../services/issue.service';
   templateUrl: './issue-card.component.html',
   styleUrl: './issue-card.component.scss'
 })
+
 export class IssueCardComponent {
 
   @Input('issue') issue!: Issue;

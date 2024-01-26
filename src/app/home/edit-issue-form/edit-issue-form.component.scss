@@ -1,0 +1,108 @@
+@import '../../../_variables.scss';
+
+.edit-issue-container {
+  font-family: 'Blinker', sans-serif;
+  padding: 15px;
+  width: 750px;
+
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .edit-issue-form {
+      display: flex;
+      flex-direction: column;
+      width: 45%;
+      margin-right: 15px;
+
+      &:last-child {
+        align-self: flex-end;
+      }
+
+      .title-field {
+        width: 100%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid $primary-color;
+        background-color: transparent !important;
+        margin-bottom: 5px;
+
+        &:focus {
+          border: none;
+          outline: none;
+          box-shadow: none;
+          background-color: transparent;
+          border-bottom: 1px solid $primary-color;
+        }
+      }
+
+      .description-field {
+        width: 100%;
+        border: 1px solid $primary-color;
+        background-color: transparent !important;
+        margin-bottom: 15px;
+        resize: none;
+        
+        &:focus {
+          border: none;
+          outline: none;
+          box-shadow: none;
+          background-color: transparent;
+          border: 1px solid $primary-color;
+        }
+      }
+
+      .custom-file-upload {
+        width: 96%;
+        padding: 10px;
+        cursor: pointer;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-align: center;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+
+      .file-input {
+        display: none;
+      }
+
+      .dialog-actions-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        width: 102%;
+
+        mat-dialog-actions {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 15px;
+          padding: 0;
+  
+          button {
+            width: 48%;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            background-color: $primary-color;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+  
+            &:hover {
+              background-color: darken($primary-color, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

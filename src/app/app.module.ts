@@ -14,6 +14,7 @@ import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { IssueCardComponent } from './home/issue-card/issue-card.component';
 import { AddIssueFormComponent } from './home/add-issue-form/add-issue-form.component';
+import { EditIssueFormComponent } from './home/edit-issue-form/edit-issue-form.component';
 import { IssueStageComponent } from './home/issue-stage/issue-stage.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -28,6 +29,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HeaderComponent,
     IssueCardComponent,
     AddIssueFormComponent,
+    EditIssueFormComponent,
     IssueStageComponent
   ],
   imports: [

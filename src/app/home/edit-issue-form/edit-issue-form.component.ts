@@ -5,13 +5,13 @@ import { IssueService } from '../../../services/issue.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-issue-form',
-  templateUrl: './add-issue-form.component.html',
-  styleUrl: './add-issue-form.component.scss'
+  selector: 'app-edit-issue-form',
+  templateUrl: './edit-issue-form.component.html',
+  styleUrl: './edit-issue-form.component.scss'
 })
-export class AddIssueFormComponent {
-  
-  addIssueForm!: FormGroup;
+export class EditIssueFormComponent {
+
+  editIssueForm!: FormGroup;
   selectedFiles: File[] = [];
   zoom = 12;
   center!: google.maps.LatLngLiteral;
@@ -23,16 +23,16 @@ export class AddIssueFormComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {title: string, content: string},
     private issueService: IssueService,
-    private dialogRef: MatDialogRef<AddIssueFormComponent>
+    private dialogRef: MatDialogRef<EditIssueFormComponent>
     ) {}
 
   ngOnInit() {
-    this.initializeAddIssueForm();
+    this.initializeEditIssueForm();
     this.initializeCurrentLocationCoordinates();
   }
 
-  initializeAddIssueForm() {
-    this.addIssueForm = new FormGroup({
+  initializeEditIssueForm() {
+    this.editIssueForm = new FormGroup({
       title: new FormControl(
         null, 
         { validators: [
@@ -50,10 +50,10 @@ export class AddIssueFormComponent {
   }
 
   isInputInvalid(inputName: string) {
-    return this.addIssueForm.controls[inputName].invalid && 
-          !this.addIssueForm.controls[inputName].pristine &&  
-          this.addIssueForm.controls[inputName].touched &&
-          this.addIssueForm.controls[inputName].value
+    return this.editIssueForm.controls[inputName].invalid && 
+          !this.editIssueForm.controls[inputName].pristine &&  
+          this.editIssueForm.controls[inputName].touched &&
+          this.editIssueForm.controls[inputName].value
   }
 
   onFileSelected(event: any) {
@@ -71,8 +71,8 @@ export class AddIssueFormComponent {
     this.selectedFiles.forEach((file, index) => {
       formData.append('images', file);
     });
-    formData.append('title', this.addIssueForm.value.title);
-    formData.append('description', this.addIssueForm.value.description);
+    formData.append('title', this.editIssueForm.value.title);
+    formData.append('description', this.editIssueForm.value.description);
     formData.append('latitude', this.issueLatitude.toString());
     formData.append('longitude', this.issueLongitude.toString());
     this.issueService.addIssue(formData).subscribe(() => {
@@ -102,3 +102,4 @@ export class AddIssueFormComponent {
   }
 
 }
+

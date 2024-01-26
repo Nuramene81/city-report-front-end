@@ -1,0 +1,36 @@
+<div class="edit-issue-container">
+  <h2>Edit an issue</h2>
+  <div class="form-container">
+    <form class="edit-issue-form" [formGroup]="editIssueForm" (ngSubmit)="onSubmit()">
+      <input class="title-field" type="text" formControlName="title" placeholder="title">
+      @if (isInputInvalid('title')) {
+        <span class="invalid-input-text">Invalid title</span>
+      } @else {
+        <span class="invalid-input-text">&nbsp;</span>
+      }
+      <textarea class="description-field" rows="12" type="text" formControlName="description" placeholder="description"></textarea>
+      <label for="fileInput" class="custom-file-upload">Choose Images</label>
+      <input class="file-input" id="fileInput" type="file" multiple formControlName="files" (change)="onFileSelected($event)">
+      @if (selectedFiles.length > 0) {
+        <span>{{selectedFiles.length}} Files selected</span>
+      } 
+      <div class="dialog-actions-container">
+        <mat-dialog-actions>
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button mat-button type="submit">Submit</button>
+        </mat-dialog-actions>
+      </div>
+    </form>
+    <google-map
+      height="400"
+      width="400"
+      [zoom]="zoom"
+      [center]="center"
+      (mapClick)="mapClick($event)"
+    >
+    @for (position of markerPositions; track position) {
+      <map-marker [position]="position" [options]="markerOptions" />
+    }
+    </google-map>
+  </div>
+</div>
