@@ -65,6 +65,7 @@
   .issues-container {
     width: 50%;
     border-right: 1px solid $primary-color;
+    overflow-y: scroll;
   }
 
   .info-container {

@@ -30,4 +30,10 @@ export class IssueService {
   refreshIssues(): void {
     this.getIssues().subscribe();
   }
+
+  deleteIssue(issueUUID: string): Observable<any> {
+    return this.http.delete<any>(`${this.issueUrl}/${issueUUID}`, { withCredentials: true }).pipe(
+      tap(() => this.refreshIssues())
+    );
+  }
 }

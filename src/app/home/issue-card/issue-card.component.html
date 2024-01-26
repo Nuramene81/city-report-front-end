@@ -12,12 +12,8 @@
       <p>Date reported: {{ issue.dateReported }}</p>
       <p>Status: {{ issue.status }}</p>
       <div class="user-options">
-        <div class="edit">
-          Edit
-        </div>
-        <div class="delete">
-          Delete
-      </div>
+        <div class="edit">Edit</div>
+        <div class="delete" (click)="onIssueDelete(issue.issueUUID, $event)">Delete</div>
     </div>
   </div>
 </div>

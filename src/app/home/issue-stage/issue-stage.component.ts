@@ -32,7 +32,7 @@ export class IssueStageComponent {
         lat: Number(this.issueLatitude),
         lng: Number(this.issueLongitude)
       };
-      this.markerPositions = [...this.markerPositions, this.center];
+      this.markerPositions = [{...this.center}];
     }, 300);
   }
 }

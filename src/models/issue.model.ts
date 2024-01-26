@@ -1,6 +1,6 @@
 
 export interface Issue {
-  id: string;
+  issueUUID: string;
   title: string;
   reportedBy: IssueUser;
   description: string;
