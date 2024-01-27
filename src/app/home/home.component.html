@@ -13,7 +13,11 @@
   <div class="issues-container">
     <h2>Issues</h2>
     @for (item of issueData; track $index) {
-      <app-issue-card [issue]="item" (issueSelected)="onIssueSelected($event)"></app-issue-card>
+      <app-issue-card 
+        [issue]="item" 
+        (issueSelected)="onIssueSelected($event)"
+        (editIssue)="openEditIssueDialog(item)"
+      ></app-issue-card>
     }
   </div>
   <div class="info-container">

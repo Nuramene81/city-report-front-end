@@ -12,6 +12,7 @@ export class IssueCardComponent {
 
   @Input('issue') issue!: Issue;
   @Output() issueSelected = new EventEmitter<Issue>();
+  @Output() editIssue = new EventEmitter<Issue>();
 
   constructor(private issueService: IssueService) { }
 
@@ -26,6 +27,11 @@ export class IssueCardComponent {
   onIssueDelete(issueUUID: string, event: Event) {
     event.stopPropagation();
     this.issueService.deleteIssue(issueUUID).subscribe();
+  }
+
+  onIssueEdit(issue: Issue, event: Event) {
+    event.stopPropagation();
+    this.editIssue.emit(issue);
   }
 
 }

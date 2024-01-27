@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { issueMockData } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
+import { EditIssueFormComponent } from './edit-issue-form/edit-issue-form.component';
 import { IssueService } from '../../services/issue.service';
 import { Issue } from '../../models/issue.model';
 
@@ -13,14 +14,14 @@ import { Issue } from '../../models/issue.model';
 })
 export class HomeComponent {
 
-
   searchForm!: FormGroup
   issueMockData = issueMockData;
   issueData!: any;
   selectedIssue!: Issue;
 
   constructor(
-    private dialog: MatDialog,
+    private addIssueDialog: MatDialog,
+    private editIssueDialog: MatDialog,
     private issueService: IssueService
   ) {}
 
@@ -37,7 +38,7 @@ export class HomeComponent {
   }
 
   openAddIssueDialog() {
-    this.dialog.open(AddIssueFormComponent, {
+    this.addIssueDialog.open(AddIssueFormComponent, {
       hasBackdrop: true
     });
   }
@@ -56,6 +57,13 @@ export class HomeComponent {
 
   onIssueSelected(issue: Issue) {
     this.selectedIssue = issue;
+  }
+
+  openEditIssueDialog(issue: Issue) {
+    this.editIssueDialog.open(EditIssueFormComponent, {
+      hasBackdrop: true,
+      data: issue
+    });
   }
 
 }

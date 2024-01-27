@@ -36,4 +36,10 @@ export class IssueService {
       tap(() => this.refreshIssues())
     );
   }
+
+  editIssue(issueFormData: any): Observable<any> {
+    return this.http.put<any>(`${this.issueUrl}/${issueFormData.issueUUID}`, issueFormData, { withCredentials: true }).pipe(
+      tap(() => this.refreshIssues())
+    );
+  }
 }

@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IssueService } from '../../../services/issue.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Issue } from '../../../models/issue.model';
 
 @Component({
   selector: 'app-edit-issue-form',
@@ -21,7 +22,7 @@ export class EditIssueFormComponent {
   markerPositions: google.maps.LatLngLiteral[] = [];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {title: string, content: string},
+    @Inject(MAT_DIALOG_DATA) public data: Issue,
     private issueService: IssueService,
     private dialogRef: MatDialogRef<EditIssueFormComponent>
     ) {}
@@ -29,6 +30,7 @@ export class EditIssueFormComponent {
   ngOnInit() {
     this.initializeEditIssueForm();
     this.initializeCurrentLocationCoordinates();
+    this.populateFormWithCurrentValues();
   }
 
   initializeEditIssueForm() {
@@ -44,8 +46,7 @@ export class EditIssueFormComponent {
           updateOn: 'blur' 
         }
       ),
-      description: new FormControl(''),
-      files: new FormControl(null)
+      description: new FormControl('')
     });
   }
 
@@ -56,26 +57,16 @@ export class EditIssueFormComponent {
           this.editIssueForm.controls[inputName].value
   }
 
-  onFileSelected(event: any) {
-    const files: FileList = event.target.files;
-    if (files.length > 0) {
-      this.selectedFiles = Array.from(files); 
-      for (const file of this.selectedFiles) {
-        console.log(file);
-      }
-    }
-  }
-
   onSubmit() {
-    const formData = new FormData();
-    this.selectedFiles.forEach((file, index) => {
-      formData.append('images', file);
-    });
-    formData.append('title', this.editIssueForm.value.title);
-    formData.append('description', this.editIssueForm.value.description);
-    formData.append('latitude', this.issueLatitude.toString());
-    formData.append('longitude', this.issueLongitude.toString());
-    this.issueService.addIssue(formData).subscribe(() => {
+    const formData = {
+      issueUUID: this.data.issueUUID,
+      title: this.editIssueForm.value.title,
+      description: this.editIssueForm.value.description,
+      issueLatitude: this.data.issueLatitude,
+      issueLongitude: this.data.issueLongitude
+    }
+    console.log(this.editIssueForm.value);
+    this.issueService.editIssue(formData).subscribe(() => {
       this.dialogRef.close();
     });
   }
@@ -101,5 +92,13 @@ export class EditIssueFormComponent {
     });
   }
 
+  populateFormWithCurrentValues() {
+    setTimeout(() => {
+      this.editIssueForm.setValue({
+        title: this.data.title,
+        description: this.data.description
+      });
+    }, 500);
+  }
 }
 
