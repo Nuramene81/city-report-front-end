@@ -4,3 +4,10 @@ export interface User {
   email?: string;
   password?: string;
 }
+
+export interface currentUser {
+  userUUID: string;
+  fullName: string;
+  username: string;
+  profileImageURL: string;
+}

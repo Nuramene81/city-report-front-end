@@ -27,6 +27,12 @@ export class IssueService {
     );
   }
 
+  searchIssues(searchTerm: string): Observable<any> {
+    return this.http.get<any>(`${this.issueUrl}?search=${searchTerm}`, { withCredentials: true }).pipe(
+      tap(issues => this.issuesSubject.next(issues))
+    );
+  }
+
   refreshIssues(): void {
     this.getIssues().subscribe();
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private loginUrl = 'http://localhost:3000/login';
   private authUrl = 'http://localhost:3000/auth';
+  private logoutURL = 'http://localhost:3000/auth/logout';
 
   constructor(private http: HttpClient) { }
 
@@ -18,4 +19,10 @@ export class AuthService {
   getIsLoggedIn(): Observable<any> {
     return this.http.get<any>(this.authUrl, { withCredentials: true });
   } 
+
+  logout(): Observable<any> {
+    return this.http.get<any>(this.logoutURL, { withCredentials: true });
+  }
+
+  
 }

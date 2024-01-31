@@ -3,7 +3,11 @@
     <app-logo></app-logo>
   </div>
   <div class="profile-container">
-    <span class="profile-username">Username</span>
-    <img src="assets\images\nur-profile-3.jpg" alt="">
+    @if (userData) {
+      <span class="profile-username">{{ userData.username }}</span>
+      <div class="profile-icon">
+        {{ userData.username.charAt(0).toUpperCase() }}
+      </div>
+    }
   </div>
 </div>
