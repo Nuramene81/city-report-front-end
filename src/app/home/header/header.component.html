@@ -1,13 +1,15 @@
 <div class="header-container">
-  <div class="logo-container">
-    <app-logo></app-logo>
-  </div>
-  <div class="profile-container">
-    @if (userData) {
-      <span class="profile-username">{{ userData.username }}</span>
-      <div class="profile-icon">
-        {{ userData.username.charAt(0).toUpperCase() }}
-      </div>
-    }
+  <div class="header-content-container">
+    <div class="logo-container">
+      <app-logo></app-logo>
+    </div>
+    <div class="profile-container">
+      @if (userData) {
+        <span class="profile-username">{{ userData.username }}</span>
+        <div class="profile-icon">
+          {{ userData.username.charAt(0).toUpperCase() }}
+        </div>
+      }
+    </div>
   </div>
 </div>

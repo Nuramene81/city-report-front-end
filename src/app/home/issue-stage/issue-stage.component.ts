@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Issue } from '../../../models/issue.model';
 
 @Component({
@@ -22,6 +22,12 @@ export class IssueStageComponent {
     this.initializeIssueLocationCoordinates();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['issueLatitude'] || changes['issueLongitude']) {
+      this.refreshMap();
+    }
+  }
+
   changeMainImage(image: string) {
     this.stageImage = image;
   }
@@ -34,5 +40,13 @@ export class IssueStageComponent {
       };
       this.markerPositions = [{...this.center}];
     }, 300);
+  }
+
+  refreshMap() {
+    this.center = {
+      lat: Number(this.issueLatitude),
+      lng: Number(this.issueLongitude)
+    };
+    this.markerPositions = [{...this.center}];
   }
 }

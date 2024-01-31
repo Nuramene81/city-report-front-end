@@ -4,15 +4,15 @@
   display: flex;
   gap: 10px;
   height: 126px;
-  border: 1px solid $primary-color;
   margin-bottom: 10px;
+  background-color: $card-bg-color;
 
   &:hover {
     background-color: $hover-color;
   }
 
   .thumbnail-container {
-    min-width: 120px;
+    width: 150px;
     height: 120px;
     display: flex;
     justify-content: center;

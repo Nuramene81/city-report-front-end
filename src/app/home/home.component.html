@@ -1,34 +1,37 @@
 <app-header></app-header>
-<div class="search-form-container">
-  <form class="search-form-content" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <input class="search-field" type="text" formControlName="search" placeholder="Search">
-    <button type="submit">Search</button>
-  </form>
-</div>
 <div class="body-container">
-  <div class="option-container">
-    <h2>Options</h2>
-    <p class="add-an-issue-option" (click)="openAddIssueDialog()">Add an issue</p>
-    <p class="add-an-issue-option" (click)="logOut()">Log out</p>
+  <div class="column-container">
+    <div class="option-container">
+      <h2>Options</h2>
+      <p class="add-an-issue-option" (click)="openAddIssueDialog()">Add an issue</p>
+      <p class="add-an-issue-option" (click)="logOut()">Log out</p>
+    </div>
+    <div class="issues-container">
+      <h2>Issues</h2>
+      <div class="search-form-container">
+        <form class="search-form-content" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+          <input class="search-field" type="text" formControlName="search" placeholder="Search">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      @for (item of issueData; track $index) {
+        <app-issue-card 
+          [issue]="item" 
+          (issueSelected)="onIssueSelected($event)"
+          (editIssue)="openEditIssueDialog(item)"
+          [user]="userData"
+        ></app-issue-card>
+      }
+    </div>
+    <div class="info-container">
+      <app-issue-stage 
+      *ngIf="selectedIssue"
+      [issue]="selectedIssue"
+      [stageImage]="selectedIssue.issueImages[0]"
+      [issueLatitude]="selectedIssue.issueLatitude"
+      [issueLongitude]="selectedIssue.issueLongitude"
+      ></app-issue-stage>
+    </div>
   </div>
-  <div class="issues-container">
-    <h2>Issues</h2>
-    @for (item of issueData; track $index) {
-      <app-issue-card 
-        [issue]="item" 
-        (issueSelected)="onIssueSelected($event)"
-        (editIssue)="openEditIssueDialog(item)"
-        [user]="userData"
-      ></app-issue-card>
-    }
-  </div>
-  <div class="info-container">
-    <app-issue-stage 
-    *ngIf="selectedIssue"
-    [issue]="selectedIssue"
-    [stageImage]="selectedIssue.issueImages[0]"
-    [issueLatitude]="selectedIssue.issueLatitude"
-    [issueLongitude]="selectedIssue.issueLongitude"
-    ></app-issue-stage>
-  </div>
+  
 </div>

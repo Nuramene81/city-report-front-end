@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Issue } from '../../../models/issue.model';
 import { IssueService } from '../../../services/issue.service';
-import { UserService } from '../../../services/user.service';
 import { currentUser } from '../../../models/user.model';
 
 @Component({
@@ -20,8 +19,7 @@ export class IssueCardComponent {
   isLoading = false;
 
   constructor(
-    private issueService: IssueService,
-    private userService: UserService
+    private issueService: IssueService
   ) { }
 
   ngOnInit() {
@@ -47,12 +45,4 @@ export class IssueCardComponent {
     event.stopPropagation();
     this.editIssue.emit(issue);
   }
-
-  // getUserData() {
-  //   this.userService.getUserData().subscribe(data => {
-  //     this.userData = data;
-  //     console.log(this.userData);
-  //   });
-  // }
-
 }

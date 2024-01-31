@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { issueMockData } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { Issue } from '../../models/issue.model';
 import { Router } from '@angular/router';
+import { IssueStageComponent } from './issue-stage/issue-stage.component';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,8 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  @ViewChild('issueStage') issueStage!: IssueStageComponent;
 
   searchForm!: FormGroup
   issueMockData = issueMockData;
@@ -37,8 +40,12 @@ export class HomeComponent {
     this.getIssues();
     setTimeout(() => {
       this.selectedIssue = this.issueData[0];
-    }, 300);
+    }, 350);
     this.getUserData();
+  }
+
+  ngAfterViewInit() {
+    // this.issueStage.refreshMap();
   }
 
   onSubmit() {
@@ -70,6 +77,8 @@ export class HomeComponent {
 
   onIssueSelected(issue: Issue) {
     this.selectedIssue = issue;
+    // this.issueStage.refreshMap();
+    console.log(this.selectedIssue);
   }
 
   openEditIssueDialog(issue: Issue) {

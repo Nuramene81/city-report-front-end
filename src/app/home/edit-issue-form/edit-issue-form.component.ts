@@ -58,14 +58,14 @@ export class EditIssueFormComponent {
   }
 
   onSubmit() {
+    console.log(this.issueLatitude, this.issueLongitude);
     const formData = {
       issueUUID: this.data.issueUUID,
       title: this.editIssueForm.value.title,
       description: this.editIssueForm.value.description,
-      issueLatitude: this.data.issueLatitude,
-      issueLongitude: this.data.issueLongitude
+      issueLatitude: this.issueLatitude.toString(),
+      issueLongitude: this.issueLongitude.toString()
     }
-    console.log(this.editIssueForm.value);
     this.issueService.editIssue(formData).subscribe(() => {
       this.dialogRef.close();
     });
