@@ -16,8 +16,19 @@
       } 
       <div class="dialog-actions-container">
         <mat-dialog-actions>
-          <button mat-button mat-dialog-close>Cancel</button>
-          <button mat-button type="submit">Submit</button>
+          <div class="cancel-button">
+            <button mat-button mat-dialog-close>Cancel</button>
+          </div>
+          <div class="submit-button">
+            @if (isLoading) {
+              <mat-progress-spinner
+                mode="indeterminate"
+                diameter="28"
+                ></mat-progress-spinner>
+            } @else {
+              <button mat-button type="submit">Submit</button>
+            }
+          </div>
         </mat-dialog-actions>
       </div>
     </form>

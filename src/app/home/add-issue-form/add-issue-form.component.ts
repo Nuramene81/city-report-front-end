@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IssueService } from '../../../services/issue.service';
@@ -19,6 +19,7 @@ export class AddIssueFormComponent {
   issueLongitude!: number;
   markerOptions: google.maps.MarkerOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
+  isLoading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {title: string, content: string},
@@ -67,6 +68,7 @@ export class AddIssueFormComponent {
   }
 
   onSubmit() {
+    this.isLoading = true;
     const formData = new FormData();
     this.selectedFiles.forEach((file, index) => {
       formData.append('images', file);
@@ -76,8 +78,10 @@ export class AddIssueFormComponent {
     formData.append('latitude', this.issueLatitude.toString());
     formData.append('longitude', this.issueLongitude.toString());
     this.issueService.addIssue(formData).subscribe(() => {
+      this.isLoading = false;
       this.dialogRef.close();
     });
+    
   }
 
   mapClick(event: any) {

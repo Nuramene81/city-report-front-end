@@ -14,6 +14,8 @@ export class IssueCardComponent {
   @Output() issueSelected = new EventEmitter<Issue>();
   @Output() editIssue = new EventEmitter<Issue>();
 
+  isLoading = false;
+
   constructor(private issueService: IssueService) { }
 
   truncateDescription(description: string, limit: number = 100): string {
@@ -25,8 +27,11 @@ export class IssueCardComponent {
   }
 
   onIssueDelete(issueUUID: string, event: Event) {
+    this.isLoading = true;
     event.stopPropagation();
-    this.issueService.deleteIssue(issueUUID).subscribe();
+    this.issueService.deleteIssue(issueUUID).subscribe(() => {
+      this.isLoading = false;
+    });
   }
 
   onIssueEdit(issue: Issue, event: Event) {

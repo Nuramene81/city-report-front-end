@@ -18,6 +18,7 @@ import { EditIssueFormComponent } from './home/edit-issue-form/edit-issue-form.c
 import { IssueStageComponent } from './home/issue-stage/issue-stage.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HttpClientModule,
     ReactiveFormsModule,
     MatDialogModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     UserService

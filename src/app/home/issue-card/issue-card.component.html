@@ -13,7 +13,15 @@
       <p>Status: {{ issue.status }}</p>
       <div class="user-options">
         <div class="edit" (click)="onIssueEdit(issue, $event)">Edit</div>
-        <div class="delete" (click)="onIssueDelete(issue.issueUUID, $event)">Delete</div>
+        @if (isLoading) {
+          <mat-progress-spinner
+            mode="indeterminate"
+            diameter="25"
+            ></mat-progress-spinner>
+        } @else {
+          <div class="delete" (click)="onIssueDelete(issue.issueUUID, $event)">Delete</div>
+        }
+        
     </div>
   </div>
 </div>
