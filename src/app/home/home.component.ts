@@ -10,6 +10,7 @@ import { UserService } from '../../services/user.service';
 import { Issue } from '../../models/issue.model';
 import { Router } from '@angular/router';
 import { IssueStageComponent } from './issue-stage/issue-stage.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,8 @@ export class HomeComponent {
   issueData!: any;
   selectedIssue!: Issue;
   userData!: any;
+  displayedIssueData!: Issue[];
+  pageSize = 10;
 
   constructor(
     private addIssueDialog: MatDialog,
@@ -63,6 +66,7 @@ export class HomeComponent {
   getIssues() {
     this.issueService.issues$.subscribe((issues) => {
       this.issueData = issues;
+      this.displayedIssueData = this.issueData.slice(0, this.pageSize);
     });
   }
 
@@ -91,6 +95,17 @@ export class HomeComponent {
     this.userService.getUserData().subscribe(data => {
       this.userData = data;
     });
+  }
+
+  pageEvent(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+  
+    if(endIndex > this.issueData.length){
+      endIndex = this.issueData.length;
+    }
+  
+    this.displayedIssueData = this.issueData.slice(startIndex, endIndex);
   }
 
 }

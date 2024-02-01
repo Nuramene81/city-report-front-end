@@ -18,7 +18,7 @@
           <button type="submit">Search</button>
         </form>
       </div>
-      @for (item of issueData; track $index) {
+      @for (item of displayedIssueData; track $index) {
         <app-issue-card 
           [issue]="item" 
           (issueSelected)="onIssueSelected($event)"
@@ -26,7 +26,10 @@
           [user]="userData"
         ></app-issue-card>
       }
+      <mat-paginator [length]="issueData.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="pageEvent($event)">
+      </mat-paginator>
     </div>
+    
     <div class="info-container">
       <app-issue-stage 
       *ngIf="selectedIssue"
