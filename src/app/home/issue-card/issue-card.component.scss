@@ -68,3 +68,17 @@
     }
   }
 }
+
+@media only screen and (max-width: 1199px) {
+
+  .issue-card-container{
+    height: unset;
+    padding: 5px;
+
+    .card-body-container {
+      flex-direction: column;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+  }
+}

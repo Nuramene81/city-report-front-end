@@ -2,7 +2,23 @@
   <div class="header-content-container">
     <div class="logo-container">
       <app-logo></app-logo>
+      <div class="mobile-menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onOpenAddIssueDialog()">
+            <span>Add an issue</span>
+          </button>
+          <button mat-menu-item (click)="onLogOut()">
+            <span>Log out</span>
+          </button>
+        </mat-menu>
+      </div>
     </div>
+
+    
+
     <div class="profile-container">
       @if (userData) {
         <span class="profile-username">{{ userData.username }}</span>

@@ -44,12 +44,7 @@ export class HomeComponent {
     this.getUserData();
   }
 
-  ngAfterViewInit() {
-    // this.issueStage.refreshMap();
-  }
-
   onSubmit() {
-    console.log(this.searchForm.value);
     this.searchIssues();
   }
 
@@ -77,8 +72,6 @@ export class HomeComponent {
 
   onIssueSelected(issue: Issue) {
     this.selectedIssue = issue;
-    // this.issueStage.refreshMap();
-    console.log(this.selectedIssue);
   }
 
   openEditIssueDialog(issue: Issue) {
@@ -97,7 +90,6 @@ export class HomeComponent {
   getUserData() {
     this.userService.getUserData().subscribe(data => {
       this.userData = data;
-      console.log(this.userData);
     });
   }
 

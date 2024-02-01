@@ -1,11 +1,15 @@
-<app-header></app-header>
+<app-header
+  (openAddIssueDialog)="openAddIssueDialog()"
+  (logOut)="logOut()"
+></app-header>
 <div class="body-container">
   <div class="column-container">
-    <div class="option-container">
-      <h2>Options</h2>
-      <p class="add-an-issue-option" (click)="openAddIssueDialog()">Add an issue</p>
-      <p class="add-an-issue-option" (click)="logOut()">Log out</p>
-    </div>
+      <div class="option-container">
+        <h2>Options</h2>
+        <p class="add-an-issue-option" (click)="openAddIssueDialog()">Add an issue</p>
+        <p class="add-an-issue-option" (click)="logOut()">Log out</p>
+      </div>
+
     <div class="issues-container">
       <h2>Issues</h2>
       <div class="search-form-container">

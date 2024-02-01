@@ -16,7 +16,12 @@
     .logo-container {
       display: flex;
       justify-content: flex-start;
+      align-items: baseline;
       width: 50%;
+
+      .mobile-menu {
+        display: none
+      }
     }
   
     .profile-container {
@@ -46,7 +51,16 @@
       }
     }
   }
+}
 
-  
-  
+@media only screen and (max-width: 1199px) {
+  .header-container {
+    .header-content-container {
+      .logo-container {
+        .mobile-menu {
+          display: inline;
+        }
+      }
+    }
+  }
 }
