@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IssueService } from '../../../services/issue.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Issue } from '../../../models/issue.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-issue-form',
@@ -24,7 +25,8 @@ export class EditIssueFormComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Issue,
     private issueService: IssueService,
-    private dialogRef: MatDialogRef<EditIssueFormComponent>
+    private dialogRef: MatDialogRef<EditIssueFormComponent>,
+    private snackBar: MatSnackBar
     ) {}
 
   ngOnInit() {
@@ -58,7 +60,6 @@ export class EditIssueFormComponent {
   }
 
   onSubmit() {
-    console.log(this.issueLatitude, this.issueLongitude);
     const formData = {
       issueUUID: this.data.issueUUID,
       title: this.editIssueForm.value.title,
@@ -67,6 +68,7 @@ export class EditIssueFormComponent {
       issueLongitude: this.issueLongitude.toString()
     }
     this.issueService.editIssue(formData).subscribe(() => {
+      this.snackBar.open('Issue updated', undefined, { duration: 3000 });
       this.dialogRef.close();
     });
   }

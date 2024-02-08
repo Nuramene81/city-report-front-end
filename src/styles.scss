@@ -13,3 +13,7 @@ body {
   margin: 0;
   color: $primary-color;
 }
+
+mat-snack-bar-container {
+  margin-bottom: 50px !important; /* Adjust this value as needed */
+}

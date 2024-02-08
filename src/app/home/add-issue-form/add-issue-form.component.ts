@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IssueService } from '../../../services/issue.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-issue-form',
@@ -24,7 +25,8 @@ export class AddIssueFormComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {title: string, content: string},
     private issueService: IssueService,
-    private dialogRef: MatDialogRef<AddIssueFormComponent>
+    private dialogRef: MatDialogRef<AddIssueFormComponent>,
+    private snackBar: MatSnackBar
     ) {}
 
   ngOnInit() {
@@ -61,9 +63,6 @@ export class AddIssueFormComponent {
     const files: FileList = event.target.files;
     if (files.length > 0) {
       this.selectedFiles = Array.from(files); 
-      for (const file of this.selectedFiles) {
-        console.log(file);
-      }
     }
   }
 
@@ -79,6 +78,7 @@ export class AddIssueFormComponent {
     formData.append('longitude', this.issueLongitude.toString());
     this.issueService.addIssue(formData).subscribe(() => {
       this.isLoading = false;
+      this.snackBar.open('Issue added successfully', undefined, { duration: 3000 });
       this.dialogRef.close();
     });
     

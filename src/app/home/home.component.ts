@@ -11,6 +11,7 @@ import { Issue } from '../../models/issue.model';
 import { Router } from '@angular/router';
 import { IssueStageComponent } from './issue-stage/issue-stage.component';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +36,8 @@ export class HomeComponent {
     private issueService: IssueService,
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -66,7 +68,10 @@ export class HomeComponent {
   getIssues() {
     this.issueService.issues$.subscribe((issues) => {
       this.issueData = issues;
-      this.displayedIssueData = this.issueData.slice(0, this.pageSize);
+      if(this.issueData){
+        this.displayedIssueData = this.issueData.slice(0, this.pageSize);
+      }
+      
     });
   }
 
@@ -87,6 +92,7 @@ export class HomeComponent {
 
   logOut() {
     this.authService.logout().subscribe(() => {
+      this.snackBar.open('Logged out');
       this.router.navigate(['/login']);
     });
   }

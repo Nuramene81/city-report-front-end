@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Issue } from '../../../models/issue.model';
 import { IssueService } from '../../../services/issue.service';
 import { currentUser } from '../../../models/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-issue-card',
@@ -19,7 +20,8 @@ export class IssueCardComponent {
   isLoading = false;
 
   constructor(
-    private issueService: IssueService
+    private issueService: IssueService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class IssueCardComponent {
     event.stopPropagation();
     this.issueService.deleteIssue(issueUUID).subscribe(() => {
       this.isLoading = false;
+      this.snackBar.open('Issue deleted', undefined, { duration: 3000 });
     });
   }
 
