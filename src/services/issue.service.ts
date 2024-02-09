@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { useURL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IssueService {
-  private issueUrl = 'http://localhost:3000/issue';
+  private issueUrl = `${useURL}/issue`;
   private issuesSubject: BehaviorSubject<any> = new BehaviorSubject(null);
   public issues$: Observable<any> = this.issuesSubject.asObservable();
 
