@@ -37,7 +37,7 @@
       <app-issue-stage 
       *ngIf="selectedIssue"
       [issue]="selectedIssue"
-      [stageImage]="selectedIssue.issueImages[0]"
+      [stageImage]="setIssueStageImage()"
       [issueLatitude]="selectedIssue.issueLatitude"
       [issueLongitude]="selectedIssue.issueLongitude"
       ></app-issue-stage>

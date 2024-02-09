@@ -48,4 +48,8 @@ export class IssueCardComponent {
     event.stopPropagation();
     this.editIssue.emit(issue);
   }
+
+  getIssueImage(): string {
+    return this.issue.issueImages.length ? this.issue.issueImages[0] : 'assets/images/no-image.png';
+  }
 }

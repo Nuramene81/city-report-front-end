@@ -114,4 +114,8 @@ export class HomeComponent {
     this.displayedIssueData = this.issueData.slice(startIndex, endIndex);
   }
 
+  setIssueStageImage() {
+    return this.selectedIssue.issueImages.length ? this.selectedIssue.issueImages[0] : 'assets/images/no-image.png';
+  }
+
 }

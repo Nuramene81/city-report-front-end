@@ -14,16 +14,19 @@
         <div class="issue-description">
           <p>{{ issue.description }}</p>
         </div>
-        <google-map
-        height="400"
-        width="100%"
-        [zoom]="zoom"
-        [center]="center"
-      >
-        @for (position of markerPositions; track position) {
-          <map-marker [position]="position" [options]="markerOptions" />
-        }
-      </google-map>
+        <div class="issue-map">
+          <h3>Issue location</h3>
+          <google-map
+            height="400"
+            width="100%"
+            [zoom]="zoom"
+            [center]="center"
+          >
+            @for (position of markerPositions; track position) {
+              <map-marker [position]="position" [options]="markerOptions" />
+            }
+          </google-map>
+        </div>
         <div class="issue-info">
           <p>Reported by: {{ issue.reportedBy.username }}</p>
           <p>Date reported: {{ issue.dateReported }}</p>
