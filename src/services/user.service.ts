@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, tap, catchError, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { useURL } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private signUpUrl = 'http://localhost:3000/user';
+  private signUpUrl = `${useURL}/user`;
   
   constructor(private http: HttpClient) {}
 

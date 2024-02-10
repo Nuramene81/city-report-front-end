@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { useURL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:3000/login';
-  private authUrl = 'http://localhost:3000/auth';
-  private logoutURL = 'http://localhost:3000/auth/logout';
+  private loginUrl = `${useURL}/login`;
+  private authUrl = `${useURL}/auth`;
+  private logoutURL = `${useURL}/auth/logout`;
 
   constructor(private http: HttpClient) { }
 

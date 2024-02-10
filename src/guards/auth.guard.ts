@@ -1,4 +1,3 @@
-import { CanActivateFn } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';

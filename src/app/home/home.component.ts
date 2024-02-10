@@ -1,6 +1,5 @@
 import { Component, ViewChild} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { issueMockData } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
 import { EditIssueFormComponent } from './edit-issue-form/edit-issue-form.component';
@@ -23,7 +22,6 @@ export class HomeComponent {
   @ViewChild('issueStage') issueStage!: IssueStageComponent;
 
   searchForm!: FormGroup
-  issueMockData = issueMockData;
   issueData!: any;
   selectedIssue!: Issue;
   userData!: any;
@@ -71,7 +69,6 @@ export class HomeComponent {
       if(this.issueData){
         this.displayedIssueData = this.issueData.slice(0, this.pageSize);
       }
-      
     });
   }
 
@@ -110,12 +107,10 @@ export class HomeComponent {
     if(endIndex > this.issueData.length){
       endIndex = this.issueData.length;
     }
-  
     this.displayedIssueData = this.issueData.slice(startIndex, endIndex);
   }
 
   setIssueStageImage() {
     return this.selectedIssue.issueImages.length ? this.selectedIssue.issueImages[0] : 'assets/images/no-image.png';
   }
-
 }
