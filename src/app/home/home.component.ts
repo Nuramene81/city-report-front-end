@@ -1,6 +1,5 @@
 import { Component, ViewChild} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { issueMockData } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
 import { EditIssueFormComponent } from './edit-issue-form/edit-issue-form.component';
@@ -23,7 +22,6 @@ export class HomeComponent {
   @ViewChild('issueStage') issueStage!: IssueStageComponent;
 
   searchForm!: FormGroup
-  issueMockData = issueMockData;
   issueData!: any;
   selectedIssue!: Issue;
   userData!: any;
