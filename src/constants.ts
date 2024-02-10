@@ -3,4 +3,4 @@ export const urls = {
   devBEAppURL: 'http://localhost:3000',
   prodBEAppURL: 'https://city-report.onrender.com'
 };
-export const useURL = urls.devBEAppURL;
+export const useURL = urls.prodBEAppURL;
