@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { useURL } from '../constants';
 
 @Injectable({
@@ -18,7 +18,10 @@ export class AuthService {
   }
 
   getIsLoggedIn(): Observable<any> {
-    return this.http.get<any>(this.authUrl, { withCredentials: true });
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(this.authUrl, { headers, withCredentials: true });
   } 
 
   logout(): Observable<any> {

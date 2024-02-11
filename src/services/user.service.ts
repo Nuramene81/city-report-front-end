@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, tap, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { useURL } from '../constants';
 
 @Injectable({
@@ -20,6 +20,9 @@ export class UserService {
   }
 
   getUserData(): Observable<any> {
-    return this.http.get<any>(this.signUpUrl, { withCredentials: true });
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(this.signUpUrl, { headers, withCredentials: true });
   }
 }

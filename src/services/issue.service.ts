@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { useURL } from '../constants';
@@ -17,7 +17,10 @@ export class IssueService {
   }
 
   addIssue(issueData: any): Observable<any> {
-    return this.http.post<any>(this.issueUrl, issueData, { withCredentials: true }).pipe(
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.post<any>(this.issueUrl, issueData, { headers, withCredentials: true }).pipe(
       tap(() => this.refreshIssues())
     );
   }

@@ -69,7 +69,6 @@ export class HomeComponent {
       if(this.issueData){
         this.displayedIssueData = this.issueData.slice(0, this.pageSize);
       }
-      
     });
   }
 
@@ -89,10 +88,9 @@ export class HomeComponent {
   }
 
   logOut() {
-    this.authService.logout().subscribe(() => {
-      this.snackBar.open('Logged out');
-      this.router.navigate(['/login']);
-    });
+    localStorage.removeItem('token');
+    this.snackBar.open('Logged out');
+    this.router.navigate(['/login']);
   }
 
   getUserData() {
@@ -108,12 +106,10 @@ export class HomeComponent {
     if(endIndex > this.issueData.length){
       endIndex = this.issueData.length;
     }
-  
     this.displayedIssueData = this.issueData.slice(startIndex, endIndex);
   }
 
   setIssueStageImage() {
     return this.selectedIssue.issueImages.length ? this.selectedIssue.issueImages[0] : 'assets/images/no-image.png';
   }
-
 }

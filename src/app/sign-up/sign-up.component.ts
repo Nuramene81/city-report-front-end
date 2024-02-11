@@ -88,6 +88,7 @@ export class SignUpComponent implements OnInit {
       }).subscribe(
         (res) => {
           console.log(res);
+          localStorage.setItem('token', res.token);
           this.snackBar.open(
             'Account created successfully!', 
             undefined, 
