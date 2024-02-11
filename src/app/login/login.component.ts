@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     }).subscribe((res) => {
         console.log(res);
         if (res.message === 'Login Successful!') {
+          localStorage.setItem('token', res.token);
           this.isLoginDetailsValid = true;
           this.snackBar.open(res.message, undefined, { duration: 3000 });
           this.router.navigate(['/']);
@@ -43,7 +44,6 @@ export class LoginComponent implements OnInit {
         }
         console.log(this.isLoginDetailsValid);
       });
-      
   }
 
 }

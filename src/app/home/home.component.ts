@@ -88,10 +88,9 @@ export class HomeComponent {
   }
 
   logOut() {
-    this.authService.logout().subscribe(() => {
-      this.snackBar.open('Logged out');
-      this.router.navigate(['/login']);
-    });
+    localStorage.removeItem('token');
+    this.snackBar.open('Logged out');
+    this.router.navigate(['/login']);
   }
 
   getUserData() {
