@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
 import { EditIssueFormComponent } from './edit-issue-form/edit-issue-form.component';
 import { IssueService } from '../../services/issue.service';
-import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { Issue } from '../../models/issue.model';
 import { Router } from '@angular/router';
@@ -32,7 +31,6 @@ export class HomeComponent {
     private addIssueDialog: MatDialog,
     private editIssueDialog: MatDialog,
     private issueService: IssueService,
-    private authService: AuthService,
     private userService: UserService,
     private router: Router,
     private snackBar: MatSnackBar
