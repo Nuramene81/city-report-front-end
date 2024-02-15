@@ -22,7 +22,6 @@ export class AuthGuard {
       if (res.message === 'Token is valid') {
         return true;
       } else {
-        console.log('User is not logged in');
         this.router.navigate(['/login']);
         return false;
       }

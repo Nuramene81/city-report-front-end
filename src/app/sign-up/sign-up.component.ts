@@ -77,7 +77,6 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.value);
     this.isConfirmPasswordMatching();
     if(this.isPasswordMatching && this.signUpForm.valid){
       this.userService.signUp({
@@ -87,7 +86,6 @@ export class SignUpComponent implements OnInit {
         password: this.signUpForm.value.password
       }).subscribe(
         (res) => {
-          console.log(res);
           localStorage.setItem('token', res.token);
           this.snackBar.open(
             'Account created successfully!', 

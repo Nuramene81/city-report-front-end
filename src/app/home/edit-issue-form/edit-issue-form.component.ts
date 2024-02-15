@@ -27,7 +27,7 @@ export class EditIssueFormComponent {
     private issueService: IssueService,
     private dialogRef: MatDialogRef<EditIssueFormComponent>,
     private snackBar: MatSnackBar
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.initializeEditIssueForm();

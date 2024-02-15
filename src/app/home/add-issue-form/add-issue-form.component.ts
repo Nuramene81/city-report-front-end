@@ -27,7 +27,7 @@ export class AddIssueFormComponent {
     private issueService: IssueService,
     private dialogRef: MatDialogRef<AddIssueFormComponent>,
     private snackBar: MatSnackBar
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.initializeAddIssueForm();
@@ -104,5 +104,4 @@ export class AddIssueFormComponent {
       this.markerPositions.push(this.center);
     });
   }
-
 }
