@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     }).subscribe((res) => {
-        console.log(res);
         if (res.message === 'Login Successful!') {
           localStorage.setItem('token', res.token);
           this.isLoginDetailsValid = true;
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
         } else {
           this.isLoginDetailsValid = false;
         }
-        console.log(this.isLoginDetailsValid);
       });
   }
 

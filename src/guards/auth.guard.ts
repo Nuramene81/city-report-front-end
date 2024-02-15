@@ -19,8 +19,6 @@ export class AuthGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.getIsLoggedIn().pipe(map((res) => {
-      console.log(res);
-
       if (res.message === 'Token is valid') {
         return true;
       } else {
