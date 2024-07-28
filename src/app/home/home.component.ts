@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddIssueFormComponent } from './add-issue-form/add-issue-form.component';
 import { EditIssueFormComponent } from './edit-issue-form/edit-issue-form.component';
+import { IssuesMapComponent } from './issues-map/issues-map.component';
 import { IssueService } from '../../services/issue.service';
 import { UserService } from '../../services/user.service';
 import { Issue } from '../../models/issue.model';
@@ -30,6 +31,7 @@ export class HomeComponent {
   constructor(
     private addIssueDialog: MatDialog,
     private editIssueDialog: MatDialog,
+    private issuesMapDialog: MatDialog,
     private issueService: IssueService,
     private userService: UserService,
     private router: Router,
@@ -50,7 +52,13 @@ export class HomeComponent {
   }
 
   openAddIssueDialog() {
-    this.addIssueDialog.open(AddIssueFormComponent, {
+    this.issuesMapDialog.open(AddIssueFormComponent, {
+      hasBackdrop: true
+    });
+  }
+  
+  openIssuesMapDialog() {
+    this.addIssueDialog.open(IssuesMapComponent, {
       hasBackdrop: true
     });
   }

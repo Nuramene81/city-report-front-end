@@ -1,0 +1,24 @@
+<div class="issues-map-container">
+  <h2>Issues Map</h2>
+  <div class="map-container">
+    <div class="map">
+      <google-map
+        height="400"
+        width="720"
+        [center]="center"
+      >
+      @for (marker of markers; track marker.position) {
+        
+        <map-marker 
+          #somemarker="mapMarker"
+          [position]="marker.position" 
+          [options]="markerOptions" 
+          (mapClick)="openInfoWindow(somemarker)"
+        ></map-marker>
+        <map-info-window>Hello Google Maps</map-info-window>
+      }
+      
+    </google-map>
+    </div>
+  </div>
+</div>
