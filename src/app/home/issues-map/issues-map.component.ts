@@ -15,12 +15,12 @@ export class IssuesMapComponent implements OnInit {
   @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
 
   markers: CustomMarker[] = [];
-  // newMarkers: google.maps.marker.AdvancedMarkerElement[] = [];
   center!: google.maps.LatLngLiteral;
   markerOptions: google.maps.MarkerOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
   issueLatitude!: number;
   issueLongitude!: number;
+  currentDisplayMarker: CustomMarker | undefined;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -58,15 +58,14 @@ export class IssuesMapComponent implements OnInit {
           position: markerPosition as google.maps.LatLngLiteral, 
           options: {draggable: false}
         });
-        
       }
     });
   }
 
-  openInfoWindow(somemarker: any) {
+  openInfoWindow(somemarker: any, markerData: any) {
     if (this.infoWindow) {
+      this.currentDisplayMarker = markerData;
       this.infoWindow.open(somemarker);
-      console.log(`Marker clicked`);
     }
   }
 

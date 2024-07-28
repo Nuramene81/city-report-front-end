@@ -7,17 +7,20 @@
         width="720"
         [center]="center"
       >
-      @for (marker of markers; track marker.position) {
-        
-        <map-marker 
-          #somemarker="mapMarker"
-          [position]="marker.position" 
-          [options]="markerOptions" 
-          (mapClick)="openInfoWindow(somemarker)"
-        ></map-marker>
-        <map-info-window>Hello Google Maps</map-info-window>
-      }
-      
+        @for (marker of markers; track marker.position) {
+          <map-marker 
+            #somemarker="mapMarker"
+            [position]="marker.position" 
+            [options]="markerOptions" 
+            (mapClick)="openInfoWindow(somemarker, marker)"
+          ></map-marker>
+          <map-info-window>
+          
+              <h3>{{ currentDisplayMarker?.label }}</h3>
+              <img class="issue-thumbnail" src="{{ currentDisplayMarker?.imageURL }}" alt="issue thumbnail">
+            
+          </map-info-window>
+        }
     </google-map>
     </div>
   </div>
