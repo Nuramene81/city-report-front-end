@@ -1,6 +1,4 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IssueService } from '../../../services/issue.service';
 import { MapInfoWindow } from '@angular/google-maps';
 import { CustomMarker } from '../../../models/custom-marker.model';
@@ -23,8 +21,6 @@ export class IssuesMapComponent implements OnInit {
   currentDisplayMarker: CustomMarker | undefined;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<IssuesMapComponent>,
     private issueService: IssueService
   ) {}
 

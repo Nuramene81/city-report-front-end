@@ -15,10 +15,8 @@
             (mapClick)="openInfoWindow(somemarker, marker)"
           ></map-marker>
           <map-info-window>
-          
-              <h3>{{ currentDisplayMarker?.label }}</h3>
-              <img class="issue-thumbnail" src="{{ currentDisplayMarker?.imageURL }}" alt="issue thumbnail">
-            
+            <h3>{{ currentDisplayMarker?.label }}</h3>
+            <img class="issue-thumbnail" src="{{ currentDisplayMarker?.imageURL }}" alt="issue thumbnail">
           </map-info-window>
         }
     </google-map>
