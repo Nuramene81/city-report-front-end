@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: your-app-name
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist/your-app-name
+    envVars:
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
