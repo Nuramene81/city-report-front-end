@@ -9,6 +9,7 @@ import { HeaderComponent } from './home/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
 import { UserService } from '../services/user.service';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
@@ -58,7 +59,11 @@ import { IssuesMapComponent } from './home/issues-map/issues-map.component';
     MatSnackBarModule
   ],
   providers: [
-    UserService
+    UserService,
+    {
+      provide: 'googleMapsApiKey',
+      useValue: environment.googleMapsApiKey
+    }
   ],
   bootstrap: [AppComponent]
 })
