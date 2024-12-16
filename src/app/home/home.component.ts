@@ -95,7 +95,7 @@ export class HomeComponent {
 
   logOut() {
     localStorage.removeItem('token');
-    this.snackBar.open('Logged out');
+    this.snackBar.open('Logged out', undefined, { duration: 5000 });
     this.router.navigate(['/login']);
   }
 
